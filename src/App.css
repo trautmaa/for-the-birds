@@ -21,6 +21,8 @@ input {
 	-webkit-transition: height 1s;
 	border: 1px solid grey;
 	border-radius: 10px;
+	position: absolute;
+	bottom: 5px;
 }
 input:focus {
 	height: 50px;
@@ -34,4 +36,8 @@ a {
 
 a:hover {
 	cursor: default;
+}
+
+svg {
+	height: 100vh;
 }
