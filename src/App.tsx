@@ -1,47 +1,25 @@
 import React from 'react';
 import './App.css';
 import { Input } from './Partials/Input';
-import { Image } from './image';
-import { getRandomFromArray } from './Helpers/Helpers';
-import gsap from 'gsap';
-
-const CLASS_NAME = 'animation-target';
-const transformOrigin = '50% 50%';
-const scaleMax = 7;
-const scaleMin = 3;
+import { SVGRender } from './Partials/SVGRender';
+import { animateRandomOnClick } from './Helpers/Helpers';
 
 function App() {
-	const onClick = () => {
-		const items = (document.getElementsByClassName(CLASS_NAME) as unknown) as SVGElement[];
-		const randomItems = getRandomFromArray(items);
+	const [ currentStep, setCurrentStep ] = React.useState(0);
 
-		const scale = Math.floor(Math.random() * (scaleMax - scaleMin) + scaleMin);
-
-		var tl = gsap.timeline({ yoyo: true });
-		tl.to(randomItems, {
-			duration: 1,
-			rotation: 360,
-			transformOrigin,
-			scaleY: scale,
-			scaleX: scale,
-			autoAlpha: 1,
-			ease: 'circ.inOut'
-		});
-		tl.to(randomItems, {
-			duration: 1,
-			rotation: 720,
-			transformOrigin,
-			scaleY: 1,
-			scaleX: 1,
-			autoAlpha: 1,
-			ease: 'circ.inOut'
-		});
+	const increment = () => {
+		const nextStep = currentStep + 1;
+		setCurrentStep(nextStep);
 	};
 
 	return (
 		<div className="App">
-			<Image />
-			<Input action={onClick} />
+			<h4 style={{ position: 'absolute' }}>Current step: {currentStep}</h4>
+			<button style={{ position: 'absolute' }} onClick={increment}>
+				Increment
+			</button>
+			<SVGRender currentStep={currentStep} />
+			<Input action={animateRandomOnClick} />
 			<a href="https://www.vecteezy.com/free-vector/landscape">Landscape Vectors by Vecteezy</a>
 		</div>
 	);

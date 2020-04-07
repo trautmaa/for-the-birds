@@ -41,3 +41,9 @@ a:hover {
 svg {
 	height: 100vh;
 }
+
+._0001,
+._0002,
+._0003 {
+	visibility: hidden;
+}
