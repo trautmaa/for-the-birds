@@ -23,6 +23,9 @@ export class SVGRender extends React.Component<SVGRenderProps> {
 		const { currentStep } = this.props;
 		const justIncremented = prevProps.currentStep + 1 === currentStep;
 		if (justIncremented) {
+			// Todo
+			// Maybe here we need to call depending on how many questions there are, so we don't run
+			// out of SVG to animate
 			animateToVisible(currentStep);
 		}
 	}

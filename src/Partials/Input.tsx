@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Question } from '../Types';
+import { isCorrect } from '../Helpers/Helpers';
 
 export interface InputProps {
     action: () => void;
@@ -11,13 +12,12 @@ export const Input: React.FC<InputProps> = ({action, question}) => {
     const [answer, setAnswer] = React.useState('')
   
     const clearAndSubmit = () => {
-        console.log(answer);
         if (isCorrect(answer, question)) {
             setAnswer('');
             action();
+            console.log('correct')
         } else {
             setAnswer('')
-            console.log('wrong')
         }
     }
 
@@ -38,15 +38,17 @@ export const Input: React.FC<InputProps> = ({action, question}) => {
         }
     }
 
+    let textInput: HTMLInputElement | null = null;
+
+    useEffect(() => {
+        textInput && textInput.focus();
+    })
+
     return (
         <div className="input-wrapper">
               {question && <p>{question?.question}</p>}
-              <input value={answer} onChange={handleAnswerChange} onKeyPress={onKeyPress} type="text"/>
+              <input ref={(input) => textInput = input} value={answer} onChange={handleAnswerChange} onKeyPress={onKeyPress} type="text"/>
         </div>
       );
   };
 
-
-  export const isCorrect = ( answer: string | number, question?: Question) => {
-      return question?.answer == answer;
-  }

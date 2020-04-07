@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import { Question } from '../Types';
 
 export const getRandomFromArray = <T>(array: T[], count: number = 1) => {
 	let randoms: number[] = [];
@@ -44,4 +45,47 @@ export const animateRandomOnClick = () => {
 		autoAlpha: 1,
 		ease: 'circ.inOut'
 	});
+};
+
+export const isCorrect = (inputAnswer: string | number, question?: Question) => {
+	if (!question) return false;
+	const { answer } = question;
+	return answer === inputAnswer || answer.toString() === inputAnswer.toString();
+};
+
+export const addClassNamesToSVG = () => {
+	const groups = getElementsByTagWithoutChildren('g');
+	console.log('addClassNamesToSVG -> groups', groups);
+	let group, label;
+	for (var i = 0; i < groups.length; i++) {
+		group = groups[i];
+		label = i + 1;
+		const className = getClassNameFromNumber(label);
+		console.log('addClassNamesToSVG -> className', className);
+		group.classList.add(className);
+
+		// @ts-ignore
+		group.style.visibility = 'hidden';
+	}
+};
+
+// Get all of group that don't contain another of that same group
+export const getElementsByTagWithoutChildren = (tagName: string) => {
+	const groups = document.getElementsByTagName(tagName);
+	let group;
+	let returnArray = [];
+	for (var i = 0; i < groups.length; i++) {
+		group = groups[i];
+		let containsAny = false;
+		for (var j = 0; j < groups.length; j++) {
+			const otherG = groups[j];
+			if (group.contains(otherG) && i !== j) {
+				containsAny = true;
+			}
+		}
+		if (!containsAny) {
+			returnArray.push(group);
+		}
+	}
+	return returnArray;
 };

@@ -17,9 +17,11 @@ export const createElementAnimation = {
 
 export const animateToVisible = (step: number) => {
 	const updatedClassName = getClassNameFromNumber(step);
+	const targets = document.getElementsByClassName(updatedClassName);
+	const target = targets[0];
 	const tl = gsap.timeline();
-	tl.from(updatedClassName, createElementAnimation, 0);
-	tl.to(updatedClassName, animationToVisible, 0);
+	tl.from(target, createElementAnimation, 0);
+	tl.to(target, animationToVisible, 0);
 	// tl.to(
 	// 	updatedClassName,
 	// 	{

@@ -4,6 +4,7 @@ import { Input } from './Partials/Input';
 import { SVGRender } from './Partials/SVGRender';
 import { Question } from './Types';
 import { Progress } from './Partials/Progress';
+import { addClassNamesToSVG } from './Helpers/Helpers';
 
 function App() {
 	const [ currentStep, setCurrentStep ] = React.useState(0);
@@ -13,6 +14,11 @@ function App() {
 		const nextStep = currentStep + 1;
 		setCurrentStep(nextStep);
 	};
+
+	// Setup SVG with classNames
+	React.useEffect(() => {
+		addClassNamesToSVG();
+	}, []);
 
 	React.useEffect(() => {
 		fetch('http://localhost:4000/questions')
@@ -24,14 +30,12 @@ function App() {
 			});
 	}, []);
 
-	console.log('qq: ', questions);
-
 	return (
 		<div className="App">
-			<h4 style={{ position: 'absolute' }}>Current step: {currentStep}</h4>
-			<button style={{ position: 'absolute' }} onClick={increment}>
-				Increment
-			</button>
+			<div style={{ position: 'absolute', bottom: '10px', right: '10px' }}>
+				<h4>Current step: {currentStep}</h4>
+				<button onClick={increment}>Increment</button>
+			</div>
 			<SVGRender currentStep={currentStep} />
 			<Input action={increment} question={questions[currentStep]} />
 			<Progress numerator={currentStep} denominator={questions.length} />
