@@ -1,23 +1,34 @@
 import React from 'react';
+import { Question } from '../Types';
 
-export const Input: React.FC<{action: () => void}> = ({action}) => {
+export interface InputProps {
+    action: () => void;
+    question?: Question;
+}
 
-    const [name, setName] = React.useState('')
+export const Input: React.FC<InputProps> = ({action, question}) => {
+
+    const [answer, setAnswer] = React.useState('')
   
     const clearAndSubmit = () => {
-        console.log(name);
-        setName('');
-        action();
+        console.log(answer);
+        if (isCorrect(answer, question)) {
+            setAnswer('');
+            action();
+        } else {
+            setAnswer('')
+            console.log('wrong')
+        }
     }
 
-    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event?.target.value;
         const clearWord = value.slice(-1) === ' ';
 
         if(clearWord) {
             clearAndSubmit();
         } else {
-            setName(value);
+            setAnswer(value);
         }
     }
   
@@ -28,6 +39,14 @@ export const Input: React.FC<{action: () => void}> = ({action}) => {
     }
 
     return (
-              <input value={name} onChange={handleNameChange} onKeyPress={onKeyPress} type="text"/>
+        <div className="input-wrapper">
+              {question && <p>{question?.question}</p>}
+              <input value={answer} onChange={handleAnswerChange} onKeyPress={onKeyPress} type="text"/>
+        </div>
       );
   };
+
+
+  export const isCorrect = ( answer: string | number, question?: Question) => {
+      return question?.answer == answer;
+  }

@@ -10,8 +10,7 @@
 	color: white;
 }
 
-input {
-	margin-top: auto;
+.input-wrapper input {
 	background-color: rgba(0, 0, 0, 0);
 	color: white;
 	border: none;
@@ -21,12 +20,19 @@ input {
 	-webkit-transition: height 1s;
 	border: 1px solid grey;
 	border-radius: 10px;
-	position: absolute;
-	bottom: 5px;
 }
-input:focus {
+.input-wrapper input:focus {
 	height: 50px;
 	font-size: 16px;
+}
+.input-wrapper {
+	position: absolute;
+	margin-top: auto;
+	bottom: 10px;
+}
+
+.input-wrapper p {
+	margin-bottom: 0;
 }
 
 a {
@@ -46,4 +52,10 @@ svg {
 ._0002,
 ._0003 {
 	visibility: hidden;
+}
+
+.progress-wrapper {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
 }
