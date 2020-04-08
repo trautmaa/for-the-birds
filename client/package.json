@@ -11,12 +11,14 @@
 		"@types/react": "^16.9.0",
 		"@types/react-dom": "^16.9.0",
 		"@types/svg-path-parser": "^1.1.0",
+		"@types/wouter": "^2.2.0",
 		"gsap": "^3.2.6",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-scripts": "3.4.1",
 		"svg-path-parser": "^1.1.0",
-		"typescript": "~3.7.2"
+		"typescript": "~3.7.2",
+		"wouter": "^2.4.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",

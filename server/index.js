@@ -3,11 +3,14 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('./config/database');
+const cors = require('cors');
 
 // Test DB
 db.authenticate().then(() => console.log('Database connected...')).catch((err) => console.log('error: ', err));
 
 const app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 5000;
 
