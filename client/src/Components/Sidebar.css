@@ -44,11 +44,6 @@
 	font-size: 1.15em;
 }
 
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-	fill: #373a47;
-}
-
 /* Wrapper for item list */
 .bm-item-list {
 	color: #b8b7ad;
@@ -63,6 +58,8 @@
 .bm-item.menu-item {
 	cursor: pointer;
 	color: #e5edd4;
+	text-decoration: none;
+	padding-bottom: 0.25rem;
 }
 
 /* Styling of overlay */

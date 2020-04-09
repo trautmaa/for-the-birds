@@ -23,13 +23,7 @@ export const Input: React.FC<InputProps> = ({action, question}) => {
 
     const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event?.target.value;
-        const clearWord = value.slice(-1) === ' ';
-
-        if(clearWord) {
-            clearAndSubmit();
-        } else {
-            setAnswer(value);
-        }
+        setAnswer(value);
     }
   
     const onKeyPress = (event: React.KeyboardEvent) => {
@@ -46,7 +40,7 @@ export const Input: React.FC<InputProps> = ({action, question}) => {
 
     return (
         <div className="input-wrapper">
-              {question && <p>{question?.question}</p>}
+              {question && <p>{question?.value}</p>}
               <input ref={(input) => textInput = input} value={answer} onChange={handleAnswerChange} onKeyPress={onKeyPress} type="text"/>
         </div>
       );

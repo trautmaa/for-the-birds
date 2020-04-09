@@ -1,47 +1,37 @@
 import React from 'react';
-import './App.css';
-import { Input } from './Partials/Input';
-import { SVGRender } from './Partials/SVGRender';
-import { Question } from './Types';
-import { Progress } from './Partials/Progress';
-import { addClassNamesToSVG } from './Helpers/Helpers';
+import './index.css';
+import { Game } from './Game';
+import { Route, useLocation } from 'wouter';
+import { WhatTheCrud } from './Components/WhatTheCrud';
+import { Sidebar } from './Components/Sidebar';
+import { Homepage } from './Components/Homepage';
+import './root.css';
 
-function App() {
-	const [ currentStep, setCurrentStep ] = React.useState(0);
-	const [ questions, setQuestions ] = React.useState<Question[]>([]);
+export const userId = 1;
+export const backendUrl = 'http://localhost:5000/';
 
-	const increment = () => {
-		const nextStep = currentStep + 1;
-		setCurrentStep(nextStep);
-	};
-
-	// Setup SVG with classNames
-	React.useEffect(() => {
-		addClassNamesToSVG();
-	}, []);
-
-	React.useEffect(() => {
-		fetch('http://localhost:4000/questions')
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => {
-				setQuestions((data as unknown) as Question[]);
-			});
-	}, []);
+export const App = () => {
+	const [ , setLocation ] = useLocation();
 
 	return (
-		<div className="App">
-			<div style={{ position: 'absolute', bottom: '10px', right: '10px' }}>
-				<h4>Current step: {currentStep}</h4>
-				<button onClick={increment}>Increment</button>
-			</div>
-			<SVGRender currentStep={currentStep} />
-			<Input action={increment} question={questions[currentStep]} />
-			<Progress numerator={currentStep} denominator={questions.length} />
-			<a href="https://www.vecteezy.com/free-vector/landscape">Landscape Vectors by Vecteezy</a>
+		<div className="root">
+			<Sidebar />
+			<Route path="/game">
+				<WhatTheCrud
+					title="Pick a set of questions to play"
+					url={backendUrl + 'modules'}
+					onSelect={(id: string) => setLocation(`/game/${id}`)}
+				/>
+			</Route>
+			<Route path="/game/:id">{(params) => <Game moduleId={params.id} />}</Route>
+			<Route path="/">
+				<Homepage />
+			</Route>
+			<Route path="/questions">
+				<WhatTheCrud title="Questions" url={backendUrl + 'questions'} />
+			</Route>
 		</div>
 	);
-}
+};
 
 export default App;

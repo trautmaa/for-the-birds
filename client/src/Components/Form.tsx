@@ -34,7 +34,7 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
 				value={form.module_id}
 				onChange={(event: ChangeEvent<HTMLInputElement>) => changeField('module_id', event.target.value)}
 			/>
-			<button onClick={() => onSubmit(form)} />
+			<button onClick={() => onSubmit(form)}>Create</button>
 		</div>
 	);
 };

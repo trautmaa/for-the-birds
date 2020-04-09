@@ -3,7 +3,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'wouter';
 import './Sidebar.css';
 
-export const Sidebar: React.FC<any> = ({}) => {
+export const Sidebar: React.FC = () => {
 	return (
 		<Menu>
 			<Link className="menu-item" href="/">
