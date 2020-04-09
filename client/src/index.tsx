@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Route } from 'wouter';
+import { Route, Link } from 'wouter';
 import { WhatTheCrud } from './Components/WhatTheCrud';
+import { Sidebar } from './Components/Sidebar';
 
 ReactDOM.render(
 	<React.StrictMode>
+		<Sidebar />
 		<Route path="/game">
 			<App />
 		</Route>
-		<Route path="/">Welcome</Route>
+		<Route path="/">Home page</Route>
 		<Route path="/questions">
 			<WhatTheCrud url="http://localhost:5000/questions" />
 		</Route>

@@ -35,11 +35,6 @@
 	margin-bottom: 0;
 }
 
-a {
-	font-size: 2px;
-	color: #282c34;
-}
-
 a:hover {
 	cursor: default;
 }
