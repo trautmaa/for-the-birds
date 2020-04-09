@@ -21,10 +21,6 @@
 	border: 1px solid grey;
 	border-radius: 10px;
 }
-.input-wrapper input:focus {
-	height: 50px;
-	font-size: 16px;
-}
 
 .input-wrapper p {
 	margin-bottom: 0;
@@ -66,7 +62,6 @@ a.attribution-link {
 	margin-right: 1rem;
 }
 
-.progress-wrapper {
-}
-.input-wrapper {
+div.skip-question {
+	width: 3rem;
 }
