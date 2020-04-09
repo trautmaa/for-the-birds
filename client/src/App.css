@@ -29,6 +29,9 @@
 a:hover {
 	cursor: default;
 }
+a:focus {
+	outline: none;
+}
 
 svg {
 	height: 100vh;
