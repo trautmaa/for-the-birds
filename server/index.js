@@ -1,8 +1,6 @@
 const express = require('express');
-const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const path = require('path');
-const db = require('./config/database');
+const { sequelize: db } = require('./config/database');
 const cors = require('cors');
 
 // Test DB

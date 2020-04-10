@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/database');
+const { sequelize: db } = require('../config/database');
 const Question = require('../models/Question');
 
 router.get('/', (req, res) =>
