@@ -26,6 +26,7 @@ export class SVGRender extends React.Component<SVGRenderProps> {
 			// Todo
 			// Maybe here we need to call depending on how many questions there are, so we don't run
 			// out of SVG to animate
+			console.log('updating/');
 			animateToVisible(currentStep);
 		}
 	}

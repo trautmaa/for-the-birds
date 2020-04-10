@@ -68,3 +68,19 @@ a.attribution-link {
 div.skip-question {
 	width: 3rem;
 }
+
+.not-found {
+	color: white;
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-size: 1.5rem;
+}
+
+.not-found a {
+	cursor: pointer;
+}
