@@ -6,7 +6,7 @@ import { Question } from './Types';
 import { Progress } from './Partials/Progress';
 import { addClassNamesToSVG } from './Helpers/Helpers';
 import { getAll } from './Helpers/Service';
-import { backendUrl } from './App';
+import { FOR_THE_BIRDS_ENDPOINT } from './config';
 
 export const Game: React.FC<{ moduleId?: string }> = ({ moduleId }) => {
 	const [ currentStep, setCurrentStep ] = React.useState(0);
@@ -22,7 +22,7 @@ export const Game: React.FC<{ moduleId?: string }> = ({ moduleId }) => {
 
 	React.useEffect(() => {
 		// Get questions
-		getAll(backendUrl + 'questions').then((data) => setQuestions(data));
+		getAll(FOR_THE_BIRDS_ENDPOINT + 'questions').then((data) => setQuestions(data));
 
 		// Setup SVG with classNames
 		addClassNamesToSVG();

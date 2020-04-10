@@ -6,17 +6,9 @@ import { WhatTheCrud } from './Components/WhatTheCrud';
 import { Sidebar } from './Components/Sidebar';
 import { Homepage } from './Components/Homepage';
 import './root.css';
+import { FOR_THE_BIRDS_ENDPOINT } from './config';
 
 export const userId = 1;
-
-let backendUrl = 'http://localhost:5000/';
-if (process.env.NODE_ENV === 'development') {
-	backendUrl = 'http://localhost:5000/';
-}
-
-if (process.env.NODE_ENV === 'production') {
-	backendUrl = 'https://for-the-birds-app.herokuapp.com/';
-}
 
 export const App = () => {
 	const [ , setLocation ] = useLocation();
@@ -27,7 +19,7 @@ export const App = () => {
 			<Route path="/game">
 				<WhatTheCrud
 					title="Pick a set of questions to play"
-					url={backendUrl + 'modules'}
+					url={FOR_THE_BIRDS_ENDPOINT + 'modules'}
 					onSelect={(id: string) => setLocation(`/game/${id}`)}
 				/>
 			</Route>
@@ -36,7 +28,7 @@ export const App = () => {
 				<Homepage />
 			</Route>
 			<Route path="/questions">
-				<WhatTheCrud title="Questions" url={backendUrl + 'questions'} />
+				<WhatTheCrud title="Questions" url={FOR_THE_BIRDS_ENDPOINT + 'questions'} />
 			</Route>
 		</div>
 	);
