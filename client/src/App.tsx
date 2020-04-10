@@ -8,7 +8,15 @@ import { Homepage } from './Components/Homepage';
 import './root.css';
 
 export const userId = 1;
-export const backendUrl = 'http://localhost:5000/';
+
+let backendUrl = 'http://localhost:5000/';
+if (process.env.NODE_ENV === 'development') {
+	backendUrl = 'http://localhost:5000/';
+}
+
+if (process.env.NODE_ENV === 'production') {
+	backendUrl = 'https://for-the-birds-app.herokuapp.com/';
+}
 
 export const App = () => {
 	const [ , setLocation ] = useLocation();
