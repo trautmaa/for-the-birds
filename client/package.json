@@ -13,7 +13,7 @@
 		"@types/react-dom": "^16.9.0",
 		"@types/svg-path-parser": "^1.1.0",
 		"@types/wouter": "^2.2.0",
-		"gsap": "^3.2.6",
+		"gsap": "^3.6.0",
 		"react": "^16.13.1",
 		"react-burger-menu": "^2.6.13",
 		"react-dom": "^16.13.1",
